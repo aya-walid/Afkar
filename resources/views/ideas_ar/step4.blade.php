@@ -132,7 +132,11 @@ text-align: left;
       ">            <label for="agreement_disc">
                         قرأت جميع المعلومات أعلاه وأوافق عليها</label>
 
-                    <input name="agreement_disc" id="agreement_disc" type="checkbox" value="1">
+                    @if(Session::get('agreement2_confirmed') == 'confirmed')
+                        <input name="agreement_disc" id="agreement_disc" type="checkbox" value="1" checked>
+                    @else
+                        <input name="agreement_disc" id="agreement_disc" type="checkbox" value="1">
+                    @endif
                 </fieldset>
                 <input type="hidden" name="step" value="5" />
                 <div class="submit">

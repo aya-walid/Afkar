@@ -288,34 +288,31 @@ if (Session::get('locale') == 'ar'){
 
 <img src="https://secure.adnxs.com/px?id=937950&seg=11046139&t=2" width="1" height="1">
 
+@php
+    $country = \App\Country::findOrFail(Session::get('country_id'));
+    $countryName = $country->country_name;
+@endphp
+<input  type="hidden" id="hdnSession" value="{{$countryName}}" />
 
 
-
-<!-- <script>
-  function myFunction() {
-     var step1 = $('.step1')
-     var step2 = $('.step2')
-
-    step1.css({display:"none"})
-    step2.css({display:"block"})
-  }
-  </script> -->
 
 <script>
-    function myFunction() {
 
-        var x = document.getElementById("step1");
-        x.style.display=  "none";
-        console.log(x.style.display)
+    var countries = document.getElementById('country');
+    var selectedCountry = document.getElementById('hdnSession').value;
 
-        // var y = document.getElementById("step2");
-
-
-        // x.style.display = "none";
-
-        // y.style.display = "block";
-
+    function selectCountry(country){
+        for(let i=0 ; i<countries.options.length ; i++)
+        {
+            if(countries.options[i].text===selectedCountry  )
+            {
+                countries.options[i].selected = true;
+                return
+            }
+        }
     }
+    selectCountry(selectedCountry)
+
 </script>
 
 

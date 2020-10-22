@@ -111,7 +111,12 @@ text-align: left;
                     <span style="color: red; font-size: 16px;">{{ $message }}</span>
                     @enderror
 
-                    <input name="agreement_aff" id="agreement_aff" type="checkbox" value="1">
+                    @if(Session::get('agreement1_confirmed') == 'confirmed')
+                        <input name="agreement_aff" id="agreement_aff" type="checkbox" value="1" checked>
+                    @else
+                        <input name="agreement_aff" id="agreement_aff" type="checkbox" value="1">
+                    @endif
+
                 </fieldset>
                 <div class="submit">
                     <div>

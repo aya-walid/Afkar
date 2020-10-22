@@ -11,7 +11,7 @@ class IdeaStepsController extends Controller
 {
     public function firstStep(){
         if (Session::get('locale') == 'ar'){
-            return view('ideas_ar.index');
+            return view('ideas_ar.step1');
         }
         return view('ideas.step1');
     }
@@ -58,7 +58,7 @@ class IdeaStepsController extends Controller
         $request->validate([
             'agreement_aff'=>['required'],
         ]);
-        Session::put('agreement1_confirmed', $request->agreement_aff);
+        Session::put('agreement1_confirmed', 'confirmed');
         if (Session::get('locale') == 'ar'){
             return view('ideas_ar.step4');
         }
@@ -68,7 +68,10 @@ class IdeaStepsController extends Controller
         $request->validate([
             'agreement_disc'=>['required'],
         ]);
-        Session::put('agreement2_confirmed', $request->agreement_disc);
+        Session::put('agreement2_confirmed', 'confirmed');
+
+        //get country id
+
         //store Idea into database
         $idea = new Idea();
         $idea->first_name = Session::get('first_name');

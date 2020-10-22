@@ -71,7 +71,11 @@
 
                 <div id="form-action"></div>
                 <fieldset class="disclaimer-checkbox">
-                    <input name="agreement_aff" id="agreement_aff" type="checkbox" value="1">
+                    @if(Session::get('agreement1_confirmed') == 'confirmed')
+                       <input name="agreement_aff" id="agreement_aff" type="checkbox" value="1" checked>
+                    @else
+                        <input name="agreement_aff" id="agreement_aff" type="checkbox" value="1">
+                    @endif
                     <label for="agreement_aff">I have received and read the above information.</label><br>
                     @error('agreement_aff')
                     <span style="color: red; font-size: 16px;">{{ $message }}</span>

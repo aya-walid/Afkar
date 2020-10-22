@@ -182,7 +182,12 @@
             ">
                                 <label for="ack_eighteen"> عمري 18 سنة أو أكبر
                                 </label>
-                                <input id="ack_eighteen" type="checkbox" name="ack_eighteen" value="1">
+                                @if(Session::get('age') == 'confirmed')
+                                    <input id="ack_eighteen" type="checkbox" name="ack_eighteen" value="1" tabindex="4" checked>
+                                @else
+                                    <input id="ack_eighteen" type="checkbox" name="ack_eighteen" value="1" tabindex="4">
+                                @endif
+
                                 @error('ack_eighteen')
                                 <span style="color: red; font-size: 16px;">{{ $message }}</span>
                                 @enderror

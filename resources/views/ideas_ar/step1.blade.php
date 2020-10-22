@@ -292,13 +292,33 @@
 
 
 
+@php
+    $country = \App\Country::findOrFail(Session::get('country_id'));
+    $countryName = $country->country_name_ar;
+@endphp
+<input  type="hidden" id="hdnSession" value="{{$countryName}}" />
 
 
 
 
 
 
+<script>
+    var countries = document.getElementById('country');
+    var selectedCountry = document.getElementById('hdnSession').value;
 
+    function selectCountry(country){
+        for(let i=0 ; i<countries.options.length ; i++)
+        {
+            if(countries.options[i].text===selectedCountry  )
+            {
+                countries.options[i].selected = true;
+                return
+            }
+        }
+    }
+    selectCountry(selectedCountry)
+</script>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>

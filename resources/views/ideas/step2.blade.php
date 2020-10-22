@@ -112,6 +112,7 @@
 
                                 <label for="ideaname">Product Idea Name</label>
                                 <input type="text" name="idea_name" value="{{Session::get('idea_name')}}" autofocus tabindex="1">
+
                                 @error('idea_name')
                                 <span style="color: red; font-size: 16px;">{{ $message }}</span>
                                 @enderror
@@ -195,8 +196,9 @@
 </div>
 
 
-<script>
 
+<script>
+    alert(document.getElementById('hdnSession').value);
 
 </script>
 
