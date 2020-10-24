@@ -292,13 +292,18 @@
 
 
 
-@php
-    $country = \App\Country::findOrFail(Session::get('country_id'));
-    $countryName = $country->country_name_ar;
-@endphp
-<input  type="hidden" id="hdnSession" value="{{$countryName}}" />
 
 
+@if(Session::has('country_id'))
+    @php
+
+        $country = \App\Country::findOrFail(Session::get('country_id'));
+        $countryName = $country->country_name_ar;
+
+    @endphp
+    <input  type="hidden" id="hdnSession" value="{{$countryName}}" />
+
+@endif
 
 
 

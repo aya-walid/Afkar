@@ -288,11 +288,17 @@ if (Session::get('locale') == 'ar'){
 
 <img src="https://secure.adnxs.com/px?id=937950&seg=11046139&t=2" width="1" height="1">
 
-@php
-    $country = \App\Country::findOrFail(Session::get('country_id'));
-    $countryName = $country->country_name;
-@endphp
-<input  type="hidden" id="hdnSession" value="{{$countryName}}" />
+
+@if(Session::has('country_id'))
+    @php
+
+        $country = \App\Country::findOrFail(Session::get('country_id'));
+        $countryName = $country->country_name;
+
+    @endphp
+    <input  type="hidden" id="hdnSession" value="{{$countryName}}" />
+
+@endif
 
 
 
